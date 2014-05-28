@@ -102,6 +102,13 @@
                 if (!self.$bg_videos) {
                     self.$bg_videos = [];
                 }
+                var video_list = $iframe.data("video-list");
+ 
+                if (video_list) {
+                    video_list = video_list.split(",");
+                    random_index = Math.floor(video_list.length * Math.random());
+                    $iframe.attr("src","http://player.vimeo.com/video/"+video_list[random_index]+"?api=1&loop=1&title=0&byline=0&portrait=0");
+                }
                 // Position video absolutely
                 var $video_wrapper = $("<div>",{id:"bg-player"}).css("position","absolute");
                 self.$bg_videos.push($iframe.wrap($video_wrapper));
